@@ -4,9 +4,8 @@ const app = Vue.createApp({
             darkMode: false,
             selectedTeam: 'Arizona Cardinals', // Default team
             selectedPosition: '', // Default to all positions
-            offenseView: true, // Toggle between offense and defense
+            viewMode: 'both', // Options: 'offense', 'defense', 'both'
             teams: [
-                // Full team names
                 'Arizona Cardinals', 
                 'Atlanta Falcons', 
                 'Baltimore Ravens', 
@@ -15,24 +14,8 @@ const app = Vue.createApp({
                 'Chicago Bears'
                 // .... Add every other team here
             ],
-            offensePositions: [
-                '',            // Empty for "All Positions"
-                'QB',          // Quarterback
-                'RB',          // Running Back
-                'LWR',         // Left Wide Receiver
-                'RWR',         // Right Wide Receiver
-                'SWR',         // Slot Wide Receiver
-                'TE'           // Tight End
-            ],
-            defensePositions: [
-                '',            // Empty for "All Positions"
-                'K',           // Kicker
-                'LB',          // Linebacker
-                'CB',          // Cornerback
-                'S',           // Safety (general)
-                'DE',          // Defensive End
-                'DT'           // Defensive Tackle
-            ],
+            offensePositions: ['QB', 'RB', 'LWR', 'RWR', 'SWR', 'TE'],
+            defensePositions: ['K', 'LB', 'CB', 'S', 'DE', 'DT'],
             playersData: {
                 'Arizona Cardinals': {
                     offense: {
@@ -148,40 +131,54 @@ const app = Vue.createApp({
         };
     },
     computed: {
-        filteredOffensePlayers() {
-            return this.filterPlayers('offense');
-        },
-        filteredDefensePlayers() {
-            return this.filterPlayers('defense');
-        },
-        // Dynamically show positions based on offense or defense view
         availablePositions() {
-            return this.offenseView ? this.offensePositions : this.defensePositions;
+            // Show only offense or defense positions based on the viewMode
+            if (this.viewMode === 'offense') {
+                return ['', ...Object.keys(this.playersData[this.selectedTeam]?.offense || {})];
+            } else if (this.viewMode === 'defense') {
+                return ['', ...Object.keys(this.playersData[this.selectedTeam]?.defense || {})];
+            }
+            // Show all positions when both are displayed
+            return [
+                '', 
+                ...Object.keys(this.playersData[this.selectedTeam]?.offense || {}), 
+                ...Object.keys(this.playersData[this.selectedTeam]?.defense || {})
+            ];
         },
-        // Dynamically generate the logo path based on the selected team
         teamLogo() {
             const teamSlug = this.selectedTeam.split(' ').pop().toLowerCase();
             return `./${teamSlug}.svg`; // Assumes images are named e.g. cardinals.svg
+        },
+        displayedOffensePlayers() {
+            const players = this.playersData[this.selectedTeam]?.offense || {};
+            // Filter players by selectedPosition if it's an offense position
+            return this.selectedPosition && this.offensePositions.includes(this.selectedPosition)
+                ? { [this.selectedPosition]: players[this.selectedPosition] }
+                : players;
+        },
+        displayedDefensePlayers() {
+            const players = this.playersData[this.selectedTeam]?.defense || {};
+            // Filter players by selectedPosition if it's a defense position
+            return this.selectedPosition && this.defensePositions.includes(this.selectedPosition)
+                ? { [this.selectedPosition]: players[this.selectedPosition] }
+                : players;
+        },
+        showOffense() {
+            // Show offense only if no specific defense position is selected
+            return !this.defensePositions.includes(this.selectedPosition);
+        },
+        showDefense() {
+            // Show defense only if no specific offense position is selected
+            return !this.offensePositions.includes(this.selectedPosition);
         }
     },
     methods: {
         toggleDarkMode() {
-            if (this.darkMode) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-            }
+            document.documentElement.setAttribute('data-theme', this.darkMode ? 'dark' : 'light');
         },
-        toggleOffenseDefense() {
-            this.offenseView = !this.offenseView;
-            this.selectedPosition = ''; // Reset the selected position when toggling between views
-        },
-        filterPlayers(type) {
-            const players = this.playersData[this.selectedTeam][type];
-            if (this.selectedPosition) {
-                return { [this.selectedPosition]: players[this.selectedPosition] };
-            }
-            return players;
+        setViewMode(mode) {
+            this.viewMode = mode;
+            this.selectedPosition = ''; // Reset position filter when changing views
         },
         sortPlayers(type, position, order) {
             this.sortedOrder[position] = order;
@@ -195,5 +192,4 @@ const app = Vue.createApp({
     }
 });
 
-// Mount the Vue app
 app.mount('#app');
