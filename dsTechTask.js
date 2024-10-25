@@ -1,22 +1,22 @@
 const app = Vue.createApp({
     data() {
         return {
-            darkMode: false, // Boolean to control the theme mode (light/dark)
-            selectedTeam: 'Arizona Cardinals', // Sets default team selection
-            selectedPosition: '', // Sets default position selection; empty implies all positions
-            offenseView: true, // Controls the current view, toggling between offense and defense
+            darkMode: false,
+            selectedTeam: 'Arizona Cardinals', // Default team
+            selectedPosition: '', // Default to all positions
+            offenseView: true, // Toggle between offense and defense
             teams: [
-                // List of available teams; only partial list shown here
+                // Full team names
                 'Arizona Cardinals', 
                 'Atlanta Falcons', 
                 'Baltimore Ravens', 
                 'Buffalo Bills', 
                 'Carolina Panthers', 
                 'Chicago Bears'
-                // Additional teams should be added as needed
+                // .... Add every other team here
             ],
             offensePositions: [
-                '',            // Blank for selecting "All Positions"
+                '',            // Empty for "All Positions"
                 'QB',          // Quarterback
                 'RB',          // Running Back
                 'LWR',         // Left Wide Receiver
@@ -25,15 +25,14 @@ const app = Vue.createApp({
                 'TE'           // Tight End
             ],
             defensePositions: [
-                '',            // Blank for selecting "All Positions"
+                '',            // Empty for "All Positions"
                 'K',           // Kicker
                 'LB',          // Linebacker
                 'CB',          // Cornerback
-                'S',           // Safety
+                'S',           // Safety (general)
                 'DE',          // Defensive End
                 'DT'           // Defensive Tackle
             ],
-            // Nested object containing team-specific data for players by position
             playersData: {
                 'Arizona Cardinals': {
                     offense: {
@@ -53,65 +52,148 @@ const app = Vue.createApp({
                         DT: ['Roy Lopez', 'Dante Stills', 'Bilal Nichols']
                     }
                 },
-                // Additional team structures follow the same pattern
+                'Atlanta Falcons': {
+                    offense: {
+                        QB: ['Kirk Cousins', 'Michael Penix Jr.'],
+                        RB: ['Bijan Robinson', 'Tyler Allgeier'],
+                        LWR: ['Drake London', 'Casey Washington'],
+                        RWR: ['Darnell Mooney', 'KhaDarel Hodge'],
+                        SWR: ['Ray-Ray McCloud'],
+                        TE: ['Kyle Pitts', 'Charlie Woerner', 'Ross Dwelley']
+                    },
+                    defense: {
+                        K: ['Younghoe Koo'],
+                        LB: ['Matthew Judon', 'James Smith-Williams', 'Kaden Elliss', 'Troy Andersen'],
+                        CB: ['Mike Hughes', 'A.J. Terrell', 'Dee Alford'],
+                        S: ['Jessie Bates', 'Justin Simmons', 'Richie Grant'],
+                        DE: ['Grady Jarrett', 'David Onyemata', 'Zach Harrison'],
+                        DT: ['David Onyemata', 'Ruke Orhorhoro']
+                    }
+                },
+                'Baltimore Ravens': {
+                    offense: {
+                        QB: ['Lamar Jackson', 'Josh Johnson', 'Devin Leary'],
+                        RB: ['Derrick Henry', 'Justice Hill', 'Rasheen Ali'],
+                        LWR: ['Zay Flowers', 'Tylan Wallace', 'Keith Kirkwood'],
+                        RWR: ['Rashod Bateman', 'Devontez Walker'],
+                        SWR: ['Nelson Agholor', 'Deonte Harty', 'Keith Kirkwood'],
+                        TE: ['Mark Andrews', 'Isaiah Likely', 'Charlie Kolar']
+                    },
+                    defense: {
+                        K: ['Justin Tucker'],
+                        LB: ['Roquan Smith', 'Odafe Oweh', 'Trenton Simpson'],
+                        CB: ['Marlon Humphrey', 'Nate Wiggins', 'Eddie Jackson'],
+                        S: ['Marcus Williams', 'Kyle Hamilton', 'Ar\'Darius Washington'],
+                        DE: ['Justin Madubuike', 'Travis Jones', 'Broderick Washington'],
+                        DT: ['Michael Pierce', 'Travis Jones']
+                    }
+                },
+                'Buffalo Bills': {
+                    offense: {
+                        QB: ['Josh Allen', 'Mitchell Trubisky'],
+                        RB: ['James Cook', 'Ray Davis', 'Ty Johnson'],
+                        LWR: ['Amari Cooper', 'Mack Hollins'],
+                        RWR: ['Keon Coleman', 'Curtis Samuel', 'Mack Hollins'],
+                        SWR: ['Khalil Shakir'],
+                        TE: ['Dalton Kincaid', 'Dawson Knox', 'Quintin Morris']
+                    },
+                    defense: {
+                        K: ['Tyler Bass'],
+                        LB: ['Terrel Bernard', 'Casey Toohill', 'Dorian Williams'],
+                        CB: ['Rasul Douglas', 'Christian Benford', 'Ja\'Marcus Ingram'],
+                        S: ['Damar Hamlin', 'Taylor Rapp', 'Lewis Cine'],
+                        DE: ['Austin Johnson', 'A.J. Epenesa', 'Gregory Rousseau'],
+                        DT: ['DaQuan Jones', 'Ed Oliver', 'Austin Johnson']
+                    }
+                },
+                'Carolina Panthers': {
+                    offense: {
+                        QB: ['Andy Dalton', 'Bryce Young'],
+                        RB: ['Chuba Hubbard', 'Miles Sanders', 'Raheem Blackshear'],
+                        LWR: ['Diontae Johnson', 'David Moore', 'Mike Strachan'],
+                        RWR: ['Jonathan Mingo', 'Adam Thielen'],
+                        SWR: ['Xavier Legette', 'David Moore'],
+                        TE: ['Tommy Tremble', 'Ja\'Tavion Sanders', 'Ian Thomas']
+                    },
+                    defense: {
+                        K: ['Eddy Pineiro'],
+                        LB: ['Josey Jewell', 'Jadeveon Clowney', 'Claudin Cherelus'],
+                        CB: ['Jaycee Horn', 'Michael Jackson', 'Dane Jackson'],
+                        S: ['Nick Scott', 'Xavier Woods', 'Sam Franklin'],
+                        DE: ['A\'Shawn Robinson', 'Charles Harris', 'LaBryan Ray'],
+                        DT: ['Derrick Brown', 'Nick Thurman']
+                    }
+                },
+                'Chicago Bears': {
+                    offense: {
+                        QB: ['Caleb Williams', 'Tyson Bagent'],
+                        RB: ['D\'Andre Swift', 'Roschon Johnson', 'Khalil Herbert'],
+                        LWR: ['D.J. Moore', 'Velus Jones'],
+                        RWR: ['Rome Odunze', 'Tyler Scott'],
+                        SWR: ['Keenan Allen', 'DeAndre Carter'],
+                        TE: ['Cole Kmet', 'Gerald Everett', 'Teagan Quitoriano']
+                    },
+                    defense: {
+                        K: ['Cairo Santos'],
+                        LB: ['Darrell Taylor', 'T.J. Edwards', 'Tremaine Edmunds'],
+                        CB: ['Tyrique Stevenson', 'Jaylon Johnson'],
+                        S: ['Jaquan Brisker', 'Kevin Byard', 'Jonathan Owens'],
+                        DE: ['DeMarcus Walker', 'Montez Sweat', 'Zacch Pickens'],
+                        DT: ['Gervon Dexter', 'Andrew Billings', 'Zacch Pickens']
+                    }
+                },
+                // .... Add every other team following the same structure
             },
-            sortedOrder: {} // Tracks the current sorting order (ascending/descending) for each position
+            sortedOrder: {} // Keep track of sorting order for each position
         };
     },
     computed: {
-        // Returns the filtered list of offensive players based on selected team and position
         filteredOffensePlayers() {
             return this.filterPlayers('offense');
         },
-        // Returns the filtered list of defensive players based on selected team and position
         filteredDefensePlayers() {
             return this.filterPlayers('defense');
         },
-        // Determines available positions based on current view (offense or defense)
+        // Dynamically show positions based on offense or defense view
         availablePositions() {
             return this.offenseView ? this.offensePositions : this.defensePositions;
         },
-        // Dynamically generates a file path for the selected team logo based on team name
+        // Dynamically generate the logo path based on the selected team
         teamLogo() {
-            const teamSlug = this.selectedTeam.split(' ').pop().toLowerCase(); // Converts team name to slug format
-            return `./${teamSlug}.svg`; // Assumes team logo files are named using team slug format
+            const teamSlug = this.selectedTeam.split(' ').pop().toLowerCase();
+            return `./${teamSlug}.svg`; // Assumes images are named e.g. cardinals.svg
         }
     },
     methods: {
-        // Toggles dark mode theme and updates the document attribute based on current theme state
         toggleDarkMode() {
             if (this.darkMode) {
-                document.documentElement.setAttribute('data-theme', 'dark'); // Activates dark theme
+                document.documentElement.setAttribute('data-theme', 'dark');
             } else {
-                document.documentElement.setAttribute('data-theme', 'light'); // Activates light theme
+                document.documentElement.setAttribute('data-theme', 'light');
             }
         },
-        // Switches between offense and defense view and resets position selection to "All"
         toggleOffenseDefense() {
-            this.offenseView = !this.offenseView; // Toggles between offense and defense view
-            this.selectedPosition = ''; // Resets position filter when view changes
+            this.offenseView = !this.offenseView;
+            this.selectedPosition = ''; // Reset the selected position when toggling between views
         },
-        // Filters players based on team, view type (offense/defense), and position selection
         filterPlayers(type) {
-            const players = this.playersData[this.selectedTeam][type]; // Retrieves players by team and type
+            const players = this.playersData[this.selectedTeam][type];
             if (this.selectedPosition) {
-                // Returns players for specific position if selected
                 return { [this.selectedPosition]: players[this.selectedPosition] };
             }
-            return players; // Returns all players for the type if no specific position selected
+            return players;
         },
-        // Sorts players in the specified position and order (ascending/descending) and updates sorted order state
         sortPlayers(type, position, order) {
-            this.sortedOrder[position] = order; // Saves sorting order for the position
-            const players = this.playersData[this.selectedTeam][type][position]; // Gets players for specific position
+            this.sortedOrder[position] = order;
+            const players = this.playersData[this.selectedTeam][type][position];
             if (order === 'asc') {
-                players.sort(); // Sorts players alphabetically (ascending)
+                players.sort();
             } else {
-                players.sort().reverse(); // Sorts players alphabetically (descending)
+                players.sort().reverse();
             }
         }
     }
 });
 
-// Mount the Vue app to the DOM element with id 'app'
+// Mount the Vue app
 app.mount('#app');
