@@ -1,256 +1,284 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#vueProject {
+  margin: 30px 20px;
+}
+
+#app {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--textColor);
+  box-shadow: 0 5px 15px black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+header {
+  background-color: var(--headerBg);
+  padding: 30px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  color: var(--textColor);
+
+  h1 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0 20px 0 0;
   }
-  
-  #vueProject {
-    margin: 100px 20px;
-  }
-  
-  #app {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    color: var(--textColor);
-    box-shadow: 0 5px 15px black;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  header {
-    background-color: var(--headerBg);
-    padding: 30px 20px;
+
+  .switch {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin: 0;
-    color: var(--textColor);
-  
-    h1 {
-      font-size: 30px;
-      font-weight: 500;
-      margin: 0;
-    }
-  
-    .switch {
-      display: flex;
-      align-items: center;
+    cursor: pointer;
+
+    input {
+      width: 20px;
+      height: 15px;
       cursor: pointer;
-  
-      input {
-        width: 20px;
-        height: 15px;
-        cursor: pointer;
+    }
+  }
+}
+
+main {
+  padding: 20px 20px 10px;
+  background: var(--mainBg);
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid var(--textColor);
+
+  > * {
+    text-align: center;
+    width: 200px;
+  }
+
+  > div {
+    margin-top: 10px;
+  }
+
+  .teamLogo {
+    width: 200px;
+    display: block;
+    border-radius: 5px;
+  }
+
+  p {
+    margin: 0 0 5px;
+    font-size: 25px;
+  }
+
+  select,
+  button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--textColor);
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+}
+
+.depthChart {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  .toggleWrap {
+    width: 100%;
+    text-align: center;
+
+    button {
+      background-color: var(--textColor);
+      color: var(--btnText);
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s;
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      border: 1px solid var(--textColor);
+      margin: 0 5px;
+
+      &:hover,
+      &:focus {
+        background-color: var(--btnText);
+        color: var(--textColor);
       }
     }
   }
-  
-  main {
-    padding: 20px 20px 10px;
-    background: var(--mainBg);
-  }
-  
-  .filters {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 3px solid var(--textColor);
-  
-    > * {
-      text-align: center;
-    }
-  
-    > div {
-      margin-top: 10px;
-    }
-  
-    .teamLogo {
-      width: 200px;
-      display: block;
-      border-radius: 5px;
-    }
-  
-    p {
-      margin: 0 0 5px;
-      font-size: 25px;
-    }
-  
-    select,
-    button {
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid var(--textColor);
-      border-radius: 5px;
-      cursor: pointer;
+
+  .offDef {
+    width: 100%;
+
+    h2 {
+      margin: 0;
+      padding: 0 10px 10px;
     }
   }
-  
-  .depthChart {
+
+  .offDefContent {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-  
-    .toggleWrap {
+    width: 100%;
+
+    > div {
       width: 100%;
-      text-align: center;
-  
-      button {
-        background-color: var(--textColor);
-        color: var(--btnText);
-        cursor: pointer;
-        border: none;
-        transition: background-color 0.3s;
-        padding: 10px;
-        font-size: 1em;
-        border-radius: 5px;
-        border: 1px solid var(--textColor);
-  
-        &:hover,
-        &:focus {
-          background-color: var(--btnText);
-          color: var(--textColor);
-        }
-      }
-    }
-  
-    .offDef {
-      width: 100%;
-  
-      h2 {
-        margin: 0;
-        padding: 0 10px 10px;
-      }
-    }
-  
-    .offDefContent {
       display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-  
-      > div {
-        width: 100%;
+      flex-direction: column;
+      border: 1px solid;
+      overflow: hidden;
+      margin-bottom: 10px;
+
+      &:first-child {
+        border-left: 1px solid;
+      }
+
+      h3 {
         display: flex;
-        flex-direction: column;
-        border: 1px solid;
-        overflow: hidden;
-        margin-bottom: 10px;
-  
-        &:first-child {
-          border-left: 1px solid;
-        }
-  
-        h3 {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin: 0;
-          padding: 10px;
-          background: #041944;
-          color: white;
-          border-bottom: 1px solid;
-  
-          &:nth-child(even) {
-            background: #a41c1f;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+        padding: 10px;
+        background: #041944;
+        color: white;
+        border-bottom: 1px solid;
+
+        &.sortBtns {
+          button {
+            background-color: white;
+            color: #041944;
+            border: 1px solid white;
+            border-radius: 3px;
+            margin-left: 5px;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 11px;
+
+            &:hover,
+            &:focus {
+              background-color: #041944;
+              color: white;
+            }
+
+            &:nth-child(odd) &:hover,
+            &:nth-child(odd) &:focus {
+              background: #a41c1f;
+            }
           }
         }
-      }
-    }
-  
-    .sortBtns {
-      display: flex;
-  
-      button {
-        background-color: white;
-        color: #041944;
-        border: 1px solid white;
-        border-radius: 3px;
-        margin-left: 5px;
-        white-space: nowrap;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        font-size: 11px;
-  
-        &:hover,
-        &:focus {
-          background-color: #041944;
-          color: white;
-        }
-      }
-  
-      &:nth-child(odd) {
-        button:hover,
-        button:focus {
+
+        &:nth-child(even) {
           background: #a41c1f;
         }
       }
     }
-  
-    ul {
-      list-style: none;
-      padding: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+
+    li {
+      padding: 5px;
+
+      &:nth-child(even) {
+        background-color: var(--liBg);
+        color: var(--textColor);
+      }
+    }
+  }
+}
+
+.printWrap {
+  text-align: center;
+  margin-top: 10px;
+
+  a.print {
+    background-color: var(--textColor);
+    color: var(--btnText);
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid var(--textColor);
+    margin: 0 5px;
+    display: inline-block;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      background-color: var(--btnText);
+      color: var(--textColor);
+    }
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .filters {
+    flex-direction: row;
+
+    > div {
       margin: 0;
-      flex-grow: 1;
-  
-      li {
-        padding: 5px;
-  
-        &:nth-child(even) {
-          background-color: var(--liBg);
-          color: var(--textColor);
-        }
-      }
     }
   }
-  
-  @media only screen and (min-width: 640px) {
-    .filters {
-      flex-direction: row;
-  
-      > div {
-        margin: 0;
-      }
+
+  .depthChart .offDefContent > div {
+    width: 33.3333%;
+    border-left: 0;
+    border-radius: 0;
+
+    &:nth-child(4) {
+      border-left: 1px solid;
     }
-  
-    .depthChart .offDefContent > div {
-      width: 33.3333%;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .depthChart .offDefContent > div {
+    width: 16.666%;
+
+    &:nth-child(4) {
       border-left: 0;
+    }
+
+    &:nth-child(3),
+    &:nth-child(4) {
       border-radius: 0;
-  
-      &:first-child,
-      &:nth-child(4) {
-        border-left: 1px solid;
-      }
     }
   }
-  
-  @media only screen and (min-width: 1100px) {
-    .depthChart .offDefContent > div {
-      width: 16.666%;
-  
-      &:nth-child(3),
-      &:nth-child(4) {
-        border-radius: 0;
-      }
-    }
-  }
-  
-  [data-theme='dark'] {
-    --bgColor: #041944;
-    --headerBg: #000000;
-    --textColor: #ffffff;
-    --btnText: #041944;
-    --mainBg: #333333;
-    --liBg: gray;
-  }
-  
-  [data-theme='light'] {
-    --bgColor: lightgray;
-    --headerBg: lightgray;
-    --textColor: #041944;
-    --btnText: #ffffff;
-    --mainBg: #ffffff;
-    --liBg: whitesmoke;
-  }
-  
+}
+
+[data-theme='dark'] {
+  --bgColor: #041944;
+  --headerBg: #000000;
+  --textColor: #ffffff;
+  --btnText: #041944;
+  --mainBg: #333333;
+  --liBg: gray;
+}
+
+[data-theme='light'] {
+  --bgColor: lightgray;
+  --headerBg: lightgray;
+  --textColor: #041944;
+  --btnText: #ffffff;
+  --mainBg: #ffffff;
+  --liBg: whitesmoke;
+}
