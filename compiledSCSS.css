@@ -32,6 +32,8 @@ header .switch {
     display: flex;
     align-items: center;
     cursor: pointer;
+    white-space: nowrap;
+    line-height: 15px;
 }
 header .switch input {
     width: 20px;
