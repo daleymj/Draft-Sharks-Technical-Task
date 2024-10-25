@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html data-theme="light">
-    <head>
-        <title>Matt Daley - Draft Sharks Technical Task</title>
-        <link rel="stylesheet" href="./compiledSCSS.css">
-    </head>
+<head>
+    <title>Matt Daley - Draft Sharks Technical Task</title>
+    <link rel="stylesheet" href="./compiledSCSS.css">
+</head>
 
 <body id="vueProject">
-
     <div id="app">
         <!-- Dark Mode Toggle -->
         <header>
@@ -35,21 +34,24 @@
                     </select>
                 </div>
             </section>
+
             <!-- Depth Chart Grid -->
             <section class="depthChart">
+                <!-- View Toggle Buttons -->
                 <div class="toggleWrap">
-                    <button @click="toggleOffenseDefense">
-                        {{ offenseView ? 'Show Defense' : 'Show Offense' }}
-                    </button>
+                    <button v-if="viewMode !== 'offense'" @click="setViewMode('offense')">Show Offense</button>
+                    <button v-if="viewMode !== 'defense'" @click="setViewMode('defense')">Show Defense</button>
+                    <button v-if="viewMode !== 'both'" @click="setViewMode('both')">Show Offense & Defense</button>
                 </div>
-                <div v-if="offenseView" class="offense offDef">
+                <!-- Offense Display -->
+                <div v-if="showOffense && (viewMode === 'offense' || viewMode === 'both')" class="offense offDef">
                     <h2>Offense</h2>
                     <div class="offDefContent">
-                        <div v-for="(players, position) in filteredOffensePlayers" :key="position">
+                        <div v-for="(players, position) in displayedOffensePlayers" :key="position">
                             <h3>{{ position }}
                                 <div class="sortBtns">
-                                <button @click="sortPlayers('offense', position, 'asc')">Sort &#11014;</button>
-                                <button @click="sortPlayers('offense', position, 'desc')">Sort &#11015;</button>
+                                    <button @click="sortPlayers('offense', position, 'asc')">Sort &#11014;</button>
+                                    <button @click="sortPlayers('offense', position, 'desc')">Sort &#11015;</button>
                                 </div>
                             </h3>
                             <ul>
@@ -59,10 +61,11 @@
                     </div>
                 </div>
 
-                <div v-else class="defense offDef">
+                <!-- Defense Display -->
+                <div v-if="showDefense && (viewMode === 'defense' || viewMode === 'both')" class="defense offDef">
                     <h2>Defense</h2>
                     <div class="offDefContent">
-                        <div v-for="(players, position) in filteredDefensePlayers" :key="position">
+                        <div v-for="(players, position) in displayedDefensePlayers" :key="position">
                             <h3>{{ position }}
                                 <div class="sortBtns">
                                     <button @click="sortPlayers('defense', position, 'asc')">Sort &#11014;</button>
@@ -76,6 +79,10 @@
                     </div>
                 </div>
             </section>
+
+            <div class="printWrap">
+                <a class="print" href="https://www.draftsharks.com/depth-chart/print-all" target="_blank">Print All Team Charts</a>
+            </div>
         </main>
     </div>
 
