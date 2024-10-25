@@ -136,7 +136,7 @@ main {
 .depthChart .sortBtns {
     display: flex;
 }
-.depthChart .sortBtns button {
+.depthChart h3 .sortBtns button {
     background-color: white;
     color: #041944;
     border: 1px solid white;
@@ -145,11 +145,16 @@ main {
     white-space: nowrap;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 11px;
 }
-.depthChart .sortBtns button:hover,
-.depthChart .sortBtns button:focus {
+.depthChart h3 .sortBtns button:hover,
+.depthChart h3 .sortBtns button:focus {
     background-color: #041944;
     color: white;
+}
+.depthChart .offDefContent > div:nth-child(odd) h3 .sortBtns button:hover,
+.depthChart .offDefContent > div:nth-child(odd) h3 .sortBtns button:focus {
+    background: #a41c1f;
 }
 .depthChart ul {
     list-style: none;
