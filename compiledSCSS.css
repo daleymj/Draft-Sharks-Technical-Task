@@ -1,0 +1,209 @@
+* {
+    box-sizing: border-box;
+}
+#vueProject {
+    margin: 100px 20px;
+}
+#app {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: var(--textColor);
+    box-shadow: 0 5px 15px black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+header {
+    background-color: var(--headerBg);
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    color: var(--textColor);
+}
+header h1 { 
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0;
+}
+header .switch {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+header .switch input {
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+}
+main {
+    padding: 20px 20px 10px;
+    background: var(--mainBg);
+}
+.filters {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--textColor);
+}
+.filters > * {
+    text-align: center;
+}
+.filters > div {
+    margin-top: 10px;
+}
+.filters .teamLogo {
+    width: 200px;
+    display: block;
+    border-radius: 5px;
+}
+.filters p {
+    margin: 0 0 5px;
+    font-size: 25px;
+}
+.filters select, .filters button { 
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--textColor);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.depthChart {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.depthChart .toggleWrap {
+    width: 100%;
+    text-align: center;
+}
+.depthChart .toggleWrap button {
+    background-color: var(--textColor);
+    color: var(--btnText);
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 5px;
+    border: 1px solid var(--textColor);
+}
+.depthChart .toggleWrap button:hover,
+.depthChart .toggleWrap button:focus {
+    background-color: var(--btnText);
+    color: var(--textColor);
+}
+.depthChart .offDef {
+    width: 100%;
+}
+.depthChart .offDef h2 {
+    margin: 0;
+    padding: 0 10px 10px;
+}
+.depthChart .offDefContent {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.depthChart .offDefContent > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.depthChart .offDefContent > div:first-child {
+    border-left: 1px solid;
+}
+.depthChart .offDefContent > div h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+    background: #041944;
+    color: white;
+    border-bottom: 1px solid;
+}
+.depthChart .offDefContent > div:nth-child(even) h3 {
+    background: #a41c1f;
+}
+.depthChart .sortBtns {
+    display: flex;
+}
+.depthChart .sortBtns button {
+    background-color: white;
+    color: #041944;
+    border: 1px solid white;
+    border-radius: 3px;
+    margin-left: 5px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.depthChart .sortBtns button:hover,
+.depthChart .sortBtns button:focus {
+    background-color: #041944;
+    color: white;
+}
+.depthChart ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+.depthChart ul li {
+    padding: 5px;
+}
+.depthChart ul li:nth-child(even) {
+    background-color: var(--liBg);
+    color: var(--textColor);
+}
+@media only screen and (min-width: 640px) {
+    .filters {
+        flex-direction: row;
+    }
+    .filters > div {
+        margin: 0;
+    }
+    .depthChart .offDefContent > div {
+        width: 33.3333%;
+        border-left: 0;
+        border-radius: 0;
+    }
+    .depthChart .offDefContent > div:first-child,
+    .depthChart .offDefContent > div:nth-child(4) {
+        border-left: 1px solid;
+    }
+}
+@media only screen and (min-width: 1100px) {
+    .depthChart .offDefContent > div {
+        width: 16.666%;
+    }
+    .depthChart .offDefContent > div:nth-child(3),
+    .depthChart .offDefContent > div:nth-child(4) {
+        border-radius: 0;
+    }
+}
+[data-theme='dark'] {
+    --bgColor: #041944;
+    --headerBg: #000000;
+    --textColor: #ffffff;
+    --btnText: #041944;
+    --mainBg: #333333;
+    --liBg: gray;
+}
+[data-theme='light'] {
+    --bgColor: lightgray;
+    --headerBg: lightgray;
+    --textColor: #041944;
+    --btnText: #ffffff;
+    --mainBg: #ffffff;
+    --liBg: whitesmoke;
+}
+  
