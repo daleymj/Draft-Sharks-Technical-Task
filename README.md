@@ -19,8 +19,8 @@ This project demonstrates a responsive, mobile-friendly depth chart page for Dra
 4. **Basic Accessibility**:
    - Implemented semantic HTML for basic accessibility, including the use of descriptive tags and straightforward keyboard navigation.
 
-5. **Hover Effects**:
-   - Added hover effects to improve user experience. Filtering options change color on hover, providing visual feedback, and dropdown lists include hover styling for better accessibility.
+5. **Hover/Focus Effects**:
+   - Added hover/focus effects to improve user experience. Filtering options change color on hover/focus, providing visual feedback, and dropdown lists include hover/focus styling for better accessibility.
 
 6. **Selective Team Display for Demonstration**:
    - For the purpose of this project, only a few teams were included to demonstrate functionality and interactivity quickly. With more time, this could be expanded to include the full set of teams.
@@ -39,7 +39,7 @@ With more time, I would implement the following enhancements to improve scalabil
    - These updates would improve the experience for all users and reinforce inclusive design.
 
 3. **Expanded Interactivity**:
-   - Building on the existing hover effects, I would add additional visual cues for player cards and filter sections, such as animations or tooltips for more detailed player stats.
+   - Building on the existing hover/focus effects, I would add additional visual cues for player cards and filter sections, such as animations or tooltips for more detailed player stats.
 
 ---
 
