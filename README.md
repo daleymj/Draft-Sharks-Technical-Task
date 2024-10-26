@@ -34,11 +34,7 @@ With more time, I would implement the following enhancements to improve scalabil
 1. **Componentization in Vue**:
    - Breaking down the application into reusable components (e.g., `TeamSelector`, `Filters`, and `PlayerList`) would improve code organization and make future updates easier to manage.
 
-2. **Enhanced Accessibility**:
-   - I would further optimize accessibility by adding `aria` labels, roles, and focus states to enhance screen reader compatibility and keyboard navigation.
-   - These updates would improve the experience for all users and reinforce inclusive design.
-
-3. **Expanded Interactivity**:
+2. **Expanded Interactivity**:
    - Building on the existing hover/focus effects, I would add additional visual cues for player cards and filter sections, such as animations or tooltips for more detailed player stats.
 
 ---
