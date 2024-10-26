@@ -1,93 +1,124 @@
 <!DOCTYPE html>
-<html data-theme="light">
+<html data-theme="light" lang="en">
 <head>
     <title>Matt Daley - Draft Sharks Technical Task</title>
-    <link rel="stylesheet" href="./compiledSCSS.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./dsFavicon.png">
+    <link rel="stylesheet" href="./compiledSCSS.css">
 </head>
 
 <body id="vueProject">
+    <!-- Skip to Main Content Link -->
+    <a href="#mainContent" class="skip-link">Skip to Main Content</a>
+
     <div id="app">
         <!-- Dark Mode Toggle -->
-        <header>
-            <h1><span>{{ selectedTeam }}</span> Team Depth Charts</h1>
-            <label class="switch">
-                <input type="checkbox" v-model="darkMode" @change="toggleDarkMode">
+        <header role="banner">
+            <h1><span aria-label="Selected team">{{ selectedTeam }}</span> Team Depth Charts</h1>
+            <label class="switch" aria-label="Dark Mode Toggle" tabindex="0">
+                <input type="checkbox" v-model="darkMode" @change="toggleDarkMode" aria-checked="false">
                 <span>Dark Mode</span>
             </label>
         </header>
 
         <!-- Filters Section -->
-        <main>
-            <section class="filters">
-                <img :src="teamLogo" alt="Team Logo" class="teamLogo">
+        <main role="main" id="mainContent">
+            <section class="filters" aria-labelledby="filterSection" role="region">
+                <h2 id="filterSection" class="sr-only">Filters Section</h2>
+                <img :src="teamLogo" :alt="selectedTeam + ' Logo'" class="teamLogo" role="img" aria-label="Team Logo">
+                
+                <!-- Team Selection -->
                 <div>
-                    <p>Team</p>
-                    <select v-model="selectedTeam">
+                    <p id="teamSelectLabel" role="heading">Team</p>
+                    <select v-model="selectedTeam" aria-label="Team Select" role="combobox" tabindex="0">
                         <option v-for="team in teams" :key="team">{{ team }}</option>
                     </select>
                 </div>
 
+                <!-- Position Selection -->
                 <div>
-                    <p>Position</p>
-                    <select v-model="selectedPosition">
-                        <option v-for="position in availablePositions" :key="position" :value="position">{{ position || 'All Positions' }}</option>
+                    <p id="positionSelectLabel" role="heading">Position</p>
+                    <select v-model="selectedPosition" aria-label="Position Select" role="combobox" tabindex="0">
+                        <option v-for="position in availablePositions" :key="position" :value="position">
+                            {{ position || 'All Positions' }}
+                        </option>
                     </select>
                 </div>
             </section>
 
             <!-- Depth Chart Grid -->
-            <section class="depthChart">
+            <section class="depthChart" role="region" aria-labelledby="depthChartSection">
+                <h2 id="depthChartSection" class="sr-only">Depth Chart</h2>
+                
                 <!-- View Toggle Buttons -->
-                <div class="toggleWrap">
-                    <button v-if="viewMode !== 'offense'" @click="setViewMode('offense')">Show Offense</button>
-                    <button v-if="viewMode !== 'defense'" @click="setViewMode('defense')">Show Defense</button>
-                    <button v-if="viewMode !== 'both'" @click="setViewMode('both')">Show Offense & Defense</button>
+                <div class="toggleWrap" role="group" aria-label="View Mode Selection">
+                    <button v-if="viewMode !== 'offense'" @click="setViewMode('offense')" aria-pressed="false" tabindex="0">
+                        Show Offense
+                    </button>
+                    <button v-if="viewMode !== 'defense'" @click="setViewMode('defense')" aria-pressed="false" tabindex="0">
+                        Show Defense
+                    </button>
+                    <button v-if="viewMode !== 'both'" @click="setViewMode('both')" aria-pressed="false" tabindex="0">
+                        Show Offense & Defense
+                    </button>
                 </div>
+
                 <!-- Offense Display -->
-                <div v-if="showOffense && (viewMode === 'offense' || viewMode === 'both')" class="offense offDef">
-                    <h2>Offense</h2>
+                <div v-if="showOffense && (viewMode === 'offense' || viewMode === 'both')" class="offense offDef" role="region" aria-labelledby="offenseSection">
+                    <h2 id="offenseSection">Offense</h2>
                     <div class="offDefContent">
                         <div v-for="(players, position) in displayedOffensePlayers" :key="position">
                             <h3>{{ position }}
-                                <div class="sortBtns">
-                                    <button @click="sortPlayers('offense', position, 'asc')">Sort &#11014;</button>
-                                    <button @click="sortPlayers('offense', position, 'desc')">Sort &#11015;</button>
+                                <div class="sortBtns" role="group" aria-label="Sorting Options for {{ position }}">
+                                    <button @click="sortPlayers('offense', position, 'asc')" aria-label="Sort ascending">
+                                        Sort &#11014;
+                                    </button>
+                                    <button @click="sortPlayers('offense', position, 'desc')" aria-label="Sort descending">
+                                        Sort &#11015;
+                                    </button>
                                 </div>
                             </h3>
-                            <ul>
-                                <li v-for="player in players" :key="player">{{ player }}</li>
+                            <ul aria-labelledby="offenseSection" role="list">
+                                <li v-for="player in players" :key="player" role="listitem">{{ player }}</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <!-- Defense Display -->
-                <div v-if="showDefense && (viewMode === 'defense' || viewMode === 'both')" class="defense offDef">
-                    <h2>Defense</h2>
+                <div v-if="showDefense && (viewMode === 'defense' || viewMode === 'both')" class="defense offDef" role="region" aria-labelledby="defenseSection">
+                    <h2 id="defenseSection">Defense</h2>
                     <div class="offDefContent">
                         <div v-for="(players, position) in displayedDefensePlayers" :key="position">
                             <h3>{{ position }}
-                                <div class="sortBtns">
-                                    <button @click="sortPlayers('defense', position, 'asc')">Sort &#11014;</button>
-                                    <button @click="sortPlayers('defense', position, 'desc')">Sort &#11015;</button>
+                                <div class="sortBtns" role="group" aria-label="Sorting Options for {{ position }}">
+                                    <button @click="sortPlayers('defense', position, 'asc')" aria-label="Sort ascending">
+                                        Sort &#11014;
+                                    </button>
+                                    <button @click="sortPlayers('defense', position, 'desc')" aria-label="Sort descending">
+                                        Sort &#11015;
+                                    </button>
                                 </div>
                             </h3>
-                            <ul>
-                                <li v-for="player in players" :key="player">{{ player }}</li>
+                            <ul aria-labelledby="defenseSection" role="list">
+                                <li v-for="player in players" :key="player" role="listitem">{{ player }}</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <div class="printWrap">
-                <a class="print" href="https://www.draftsharks.com/depth-chart/print-all" target="_blank">Print All Team Charts</a>
+            <!-- Print Link -->
+            <div class="printWrap" role="region" aria-labelledby="printLinkSection">
+                <h2 id="printLinkSection" class="sr-only">Print Options</h2>
+                <a class="print" href="https://www.draftsharks.com/depth-chart/print-all" target="_blank" role="link" aria-label="Print all team charts" tabindex="0">
+                    Print All Team Charts
+                </a>
             </div>
         </main>
     </div>
 
-    <!-- Vue.js CDN -->
+    <!-- Vue.js CDN and Main Script -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./dsTechTask.js"></script>
 </body>
