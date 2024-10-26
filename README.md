@@ -29,7 +29,7 @@ This project demonstrates a responsive, mobile-friendly depth chart page for Dra
 
 ### Additional Enhancements (Given More Time)
 
-With more time, I would implement the following enhancements to improve scalability, accessibility, and user experience:
+With more time, I would implement the following enhancements to improve scalability, accessibility, and user experience. Given the 2-3 hour time constraint, I prioritized the essential functionality and responsiveness as outlined in the project requirements:
 
 1. **Componentization in Vue**:
    - Breaking down the application into reusable components (e.g., `TeamSelector`, `Filters`, and `PlayerList`) would improve code organization and make future updates easier to manage.
