@@ -17,7 +17,7 @@ This project demonstrates a responsive, mobile-friendly depth chart page for Dra
    - Added a dark mode toggle, allowing users to switch between light and dark themes.
 
 4. **Basic Accessibility**:
-   - Implemented semantic HTML for basic accessibility, including the use of descriptive tags and straightforward keyboard navigation.
+   - Implemented semantic HTML for accessibility, including the use of descriptive tags and straightforward keyboard navigation.
 
 5. **Hover/Focus Effects**:
    - Added hover/focus effects to improve user experience. Filtering options change color on hover/focus, providing visual feedback, and dropdown lists include hover/focus styling for better accessibility.
