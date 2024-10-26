@@ -1,3 +1,4 @@
+// Global styles
 * {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
@@ -7,6 +8,37 @@
   margin: 30px 20px;
 }
 
+// Visually hidden skip link for screen readers
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  background: #041944;
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: top 0.3s;
+
+  &:focus {
+    top: 10px;
+  }
+}
+
+// Screen reader-only style
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+// Main app container styles
 #app {
   width: 100%;
   max-width: 1200px;
@@ -17,6 +49,7 @@
   overflow: hidden;
 }
 
+// Header styles
 header {
   background-color: var(--headerBg);
   padding: 30px 20px;
@@ -36,6 +69,8 @@ header {
     display: flex;
     align-items: center;
     cursor: pointer;
+    white-space: nowrap;
+    line-height: 15px;
 
     input {
       width: 20px;
@@ -45,11 +80,13 @@ header {
   }
 }
 
+// Main content area styles
 main {
   padding: 20px 20px 10px;
   background: var(--mainBg);
 }
 
+// Filter section styles
 .filters {
   display: flex;
   flex-direction: column;
@@ -90,6 +127,7 @@ main {
   }
 }
 
+// Depth chart container styles
 .depthChart {
   display: flex;
   flex-wrap: wrap;
@@ -159,32 +197,34 @@ main {
           background: #a41c1f;
         }
       }
+    }
+  }
 
-      .sortBtns {
-        display: flex;
+  .sortBtns {
+    display: flex;
 
-        button {
-          background-color: white;
-          color: #041944;
-          border: 1px solid white;
-          border-radius: 3px;
-          margin-left: 5px;
-          white-space: nowrap;
-          cursor: pointer;
-          transition: background-color 0.3s;
-          font-size: 11px;
+    button {
+      background-color: white;
+      color: #041944;
+      border: 1px solid white;
+      border-radius: 3px;
+      margin-left: 5px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 11px;
 
-          &:hover,
-          &:focus {
-            background-color: #041944;
-            color: white;
-          }
+      &:hover,
+      &:focus {
+        background-color: #041944;
+        color: white;
+      }
+    }
 
-          &:nth-child(odd) &:hover,
-          &:nth-child(odd) &:focus {
-            background: #a41c1f;
-          }
-        }
+    &:nth-child(odd) {
+      button:hover,
+      button:focus {
+        background: #a41c1f;
       }
     }
   }
@@ -206,6 +246,7 @@ main {
   }
 }
 
+// Print button styles
 .printWrap {
   text-align: center;
   margin-top: 10px;
@@ -232,6 +273,7 @@ main {
   }
 }
 
+// Responsive layout adjustments for depth chart at 640px
 @media only screen and (min-width: 640px) {
   .depthChart .offDefContent > div {
     width: 33.3333%;
@@ -244,6 +286,7 @@ main {
   }
 }
 
+// Responsive layout adjustments for filters at 750px
 @media only screen and (min-width: 750px) {
   .filters {
     flex-direction: row;
@@ -254,6 +297,38 @@ main {
   }
 }
 
+// Further responsive layout adjustments for depth chart at 1100px
 @media only screen and (min-width: 1100px) {
   .depthChart .offDefContent > div {
-    width: 
+    width: 16.666%;
+
+    &:nth-child(4) {
+      border-left: 0;
+    }
+
+    &:nth-child(3),
+    &:nth-child(4) {
+      border-radius: 0;
+    }
+  }
+}
+
+// Dark theme color variables
+[data-theme='dark'] {
+  --bgColor: #041944;
+  --headerBg: #000000;
+  --textColor: #ffffff;
+  --btnText: #041944;
+  --mainBg: #333333;
+  --liBg: gray;
+}
+
+// Light theme color variables
+[data-theme='light'] {
+  --bgColor: lightgray;
+  --headerBg: lightgray;
+  --textColor: #041944;
+  --btnText: #ffffff;
+  --mainBg: #ffffff;
+  --liBg: whitesmoke;
+}
