@@ -38,18 +38,14 @@ With more time, I would implement the following enhancements to improve scalabil
    - I would further optimize accessibility by adding `aria` labels, roles, and focus states to enhance screen reader compatibility and keyboard navigation.
    - These updates would improve the experience for all users and reinforce inclusive design.
 
-3. **Advanced Design Techniques**:
-   - Incorporating CSS Grid alongside Flexbox for larger screens could allow for a more refined layout, especially with complex data sections.
-   - Using responsive font scaling (`clamp()` or viewport units) would further enhance the visual design.
-
-4. **Expanded Interactivity**:
+3. **Expanded Interactivity**:
    - Building on the existing hover effects, I would add additional visual cues for player cards and filter sections, such as animations or tooltips for more detailed player stats.
 
 ---
 
 ### File Structure
 
-To complete the assignment quickly, all files are in a single directory. In a full-scale project, I would implement a more organized structure for improved clarity and ease of maintenance.
+To complete the assignment quickly, all files are in a single directory. In a full-scale project, I would implement a more organized structure for improved clarity and ease of maintenance using seperate component files.
 
 ---
 
