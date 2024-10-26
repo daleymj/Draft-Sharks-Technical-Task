@@ -1,8 +1,8 @@
-# Draft Sharks Technical Task
+Draft Sharks Technical Task
 
 ## Project Overview
 
-This project demonstrates a responsive, mobile-friendly depth chart page for Draft Sharks, built to showcase core skills in front-end development and Vue.js. The assignment was completed within the 2-3 hour time limit, focusing on essential functionality, Vue usage, and basic accessibility.
+This project is a responsive, accessible depth chart page created to demonstrate Vue.js skills and front-end development practices. The assignment was completed within the 2-3 hour time limit, focusing on essential functionality, Vue usage, and basic accessibility.
 
 ### Features Implemented
 
@@ -16,14 +16,16 @@ This project demonstrates a responsive, mobile-friendly depth chart page for Dra
 3. **Dark Mode**:
    - Added a dark mode toggle, allowing users to switch between light and dark themes.
 
-4. **Basic Accessibility**:
-   - Implemented semantic HTML for accessibility, including the use of descriptive tags and straightforward keyboard navigation.
+4. **Accessibility**:
+   - Included a “Skip to Main Content” link for screen reader users.
+   - Used semantic HTML with `aria` labels and roles.
+   - Ensured keyboard navigation across interactive elements.
 
-5. **Hover/Focus Effects**:
-   - Added hover/focus effects to improve user experience. Filtering options change color on hover/focus, providing visual feedback, and dropdown lists include hover/focus styling for better accessibility.
+5. **Hover Effects**:
+   - Added hover effects to improve user experience. Filtering options change color on hover, providing visual feedback, and dropdown lists include hover styling for better accessibility.
 
 6. **Selective Team Display for Demonstration**:
-   - For the purpose of this project, only a few teams were included to demonstrate functionality and interactivity quickly. With more time, this could be expanded to include the full set of teams.
+   - For the purpose of this project, only a few teams were included to demonstrate functionality and interactivity quickly. With more time, this could be expanded to include a full set of teams.
 
 ---
 
@@ -32,7 +34,7 @@ This project demonstrates a responsive, mobile-friendly depth chart page for Dra
 With more time, I would implement the following enhancements to improve scalability, accessibility, and user experience. Given the 2-3 hour time constraint, I prioritized the essential functionality and responsiveness as outlined in the project requirements:
 
 1. **Componentization in Vue**:
-   - Breaking down the application into reusable components (e.g., `TeamSelector`, `Filters`, and `PlayerList`) would improve code organization and make future updates easier to manage.
+   - Breaking down the application into reusable components (e.g., `TeamSelector`, `Filters`, and `PlayerList`) would improve code organization and make future updates easier to manage. Given the scope and tools used here, I implemented these within a single file to align with project constraints.
 
 2. **Expanded Interactivity**:
    - Building on the existing hover/focus effects, I would add additional visual cues for player cards and filter sections, such as animations or tooltips for more detailed player stats.
