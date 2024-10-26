@@ -42,27 +42,20 @@ With more time, I would implement the following enhancements to improve scalabil
 ### File Structure
 
 To complete the assignment quickly, all files are in a single directory. In a full-scale project, I would implement a more organized structure for improved clarity and ease of maintenance using seperate component files.
-   -  /src
-      |-- /images
-      |       |-- dsFavicon.png
-      |       |-- cardinals.svg
-      |       |-- falcons.svg
-      |       |-- ravens.svg
-      |       |-- bills.svg
-      |       |-- panthers.svg
-      |       |-- bears.svg
-      |-- /styles
-      |       |-- compiledSCSS.css
-      |       |-- dsTechTask.scss
-      |-- /components
-      |   |-- TeamSelection.vue
-      |   |-- PositionSelection.vue
-      |   |-- PlayerList.vue
-      |   |-- DarkModeToggle.vue
-      |   |-- LogoDisplay.vue
-      |   |-- SortButton.vue
-      |-- App.vue
-      |-- main.js
+   - **`/src`**:
+   - **`/src/images`**
+   - **`/src/styles`**
+     - `compiledSCSS.css`
+     - `dsTechTask.scss`
+   - **`/src/components`**
+     - `TeamSelection.vue`
+     - `PositionSelection.vue`
+     - `PlayerList.vue`
+     - `DarkModeToggle.vue`
+     - `LogoDisplay.vue`
+     - `SortButton.vue`
+   - **`App.vue`**
+   - **`main.js`**
 
 ---
 
