@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project demonstrates a responsive, mobile-friendly depth chart page for Draft Sharks, built to showcase core skills in front-end development and Vue.js. The assignment was completed within the 2-3 hour recommended time frame, focusing on essential functionality, Vue usage, and basic accessibility.
+This project demonstrates a responsive, mobile-friendly depth chart page for Draft Sharks, built to showcase core skills in front-end development and Vue.js. The assignment was completed within the 2-3 hour time limit, focusing on essential functionality, Vue usage, and basic accessibility.
 
 ### Features Implemented
 
@@ -23,7 +23,7 @@ This project demonstrates a responsive, mobile-friendly depth chart page for Dra
    - Added hover effects to improve user experience. Filtering options change color on hover, providing visual feedback, and dropdown lists include hover styling for better accessibility.
 
 6. **Selective Team Display for Demonstration**:
-   - For the purpose of this project, only a few teams were included to demonstrate functionality and interactivity quickly. With more time, this could be expanded to include a full set of teams.
+   - For the purpose of this project, only a few teams were included to demonstrate functionality and interactivity quickly. With more time, this could be expanded to include the full set of teams.
 
 ---
 
