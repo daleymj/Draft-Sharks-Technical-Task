@@ -6,4 +6,4 @@ I only used a few teams just to create the functionality and code it faster.
 
 I wrote up a .scss file and converted it to .css for the browser
 
-I used flex-box for all the responsiveness
+I used flex-box to make it responsive and beautiful across all devices.
