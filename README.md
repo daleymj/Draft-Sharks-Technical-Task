@@ -25,7 +25,7 @@ This project is a responsive, accessible depth chart page created to demonstrate
    - Added hover effects to improve user experience. Filtering options change color on hover, providing visual feedback, and dropdown lists include hover styling for better accessibility.
 
 6. **Selective Team Display for Demonstration**:
-   - For the purpose of this project, only a few teams were included to demonstrate functionality and interactivity quickly. With more time, this could be expanded to include a full set of teams.
+   - For the purpose of this project, only a few teams were included to demonstrate functionality and interactivity quickly. With more time, this could be expanded to include the full set of teams.
 
 ---
 
@@ -34,7 +34,7 @@ This project is a responsive, accessible depth chart page created to demonstrate
 With more time, I would implement the following enhancements to improve scalability, accessibility, and user experience. Given the 2-3 hour time constraint, I prioritized the essential functionality and responsiveness as outlined in the project requirements:
 
 1. **Componentization in Vue**:
-   - Breaking down the application into reusable components (e.g., `TeamSelector`, `Filters`, and `PlayerList`) would improve code organization and make future updates easier to manage. Given the scope and tools used here, I implemented these within a single file to align with project constraints.
+   - Breaking down the application into reusable components (e.g., `TeamSelection`, `PositionSelection`, and `PlayerList`) would improve code organization and make future updates easier to manage. Given the scope and tools used here, I implemented these within a single file to align with project constraints.
 
 2. **Expanded Interactivity**:
    - Building on the existing hover/focus effects, I would add additional visual cues for player cards and filter sections, such as animations or tooltips for more detailed player stats.
