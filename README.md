@@ -41,9 +41,10 @@ With more time, I would implement the following enhancements to improve scalabil
 
 ---
 
-### File Structure
+### Structure
 
-To complete the assignment quickly, all files are in a single directory. In a full-scale project, I would implement a more organized structure for improved clarity and ease of maintenance using seperate component files.
+To complete the assignment quickly, all files are in a single directory. In a full-scale project, I would implement a more organized directory structure for improved clarity and ease of maintenance, using separate component files.
+
    - **`/src`**:
    - **`/src/images`**
    - **`/src/styles`**
