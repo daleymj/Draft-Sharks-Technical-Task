@@ -31,7 +31,7 @@ This project is a responsive, accessible depth chart page created to demonstrate
 
 ### Additional Enhancements (Given More Time)
 
-With more time, I would implement the following enhancements to improve scalability, accessibility, and user experience. Given the 2-3 hour time constraint, I prioritized the essential functionality and responsiveness as outlined in the project requirements:
+With more time, I would implement the following enhancements to improve scalability and user experience. Given the 2-3 hour time constraint, I prioritized the essential functionality and responsiveness as outlined in the project requirements:
 
 1. **Componentization in Vue**:
    - Breaking down the application into reusable components (e.g., `TeamSelection`, `PositionSelection`, and `PlayerList`) would improve code organization and make future updates easier to manage. Given the scope and tools used here, I implemented these within a single file to align with project constraints.
