@@ -1,4 +1,4 @@
-# Draft Sharks Technical Task
+# Depth Chart Technical Task
 
 ## Project Overview
 
